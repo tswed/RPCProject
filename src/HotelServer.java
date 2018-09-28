@@ -57,11 +57,12 @@ public class HotelServer implements IHotelServer {
 
     public static void main(String args[]) {
         try {
+            System.setProperty("java.rmi.server.hostname", "172.22.181.34");
             HotelServer obj = new HotelServer();
             IHotelServer stub = (IHotelServer) UnicastRemoteObject.exportObject(obj, 0);
 
             LocateRegistry.createRegistry(5001);
-            Registry registry = LocateRegistry.getRegistry("192.168.56.1",5001);
+            Registry registry = LocateRegistry.getRegistry("172.22.181.34",5001);
 
             registry.bind("Hotel", stub);
 

@@ -63,11 +63,12 @@ public class AirlineServer implements IAirlineServer {
 
     public static void main(String args[]) {
         try {
+            System.setProperty("java.rmi.server.hostname", "172.22.181.41");
             AirlineServer obj = new AirlineServer();
             IAirlineServer stub = (IAirlineServer) UnicastRemoteObject.exportObject(obj, 0);
 
             LocateRegistry.createRegistry(5002);
-            Registry registry = LocateRegistry.getRegistry("192.168.56.1",5002);
+            Registry registry = LocateRegistry.getRegistry("172.22.181.41",5002);
 
             registry.bind("Airline", stub);
 

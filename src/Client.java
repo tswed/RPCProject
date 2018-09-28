@@ -5,7 +5,6 @@ import java.util.HashMap;
 public class Client {
 
     public Client() {}
-
     static IHotelServer hotelStub;
     static IAirlineServer airlineStub;
     static ICarServer carStub;
@@ -62,7 +61,7 @@ public class Client {
     }
 
     private static void CallAirlineServer() throws Exception {
-        Registry airlineRegistry = LocateRegistry.getRegistry("192.168.56.1", 5002);
+        Registry airlineRegistry = LocateRegistry.getRegistry("172.22.181.41", 5002);
         airlineStub = (IAirlineServer) airlineRegistry.lookup("Airline");
 
         HashMap<String, Reservation> reservations;
@@ -84,7 +83,7 @@ public class Client {
     }
 
     private static void CallHotelServer() throws Exception {
-        Registry hotelRegistry = LocateRegistry.getRegistry("192.168.56.1", 5001);
+        Registry hotelRegistry = LocateRegistry.getRegistry("172.22.181.34", 5001);
         hotelStub = (IHotelServer) hotelRegistry.lookup("Hotel");
         HashMap<String, Reservation> reservations;
         HashMap<String, Hotel> hotels;
@@ -112,7 +111,7 @@ public class Client {
     }
 
     private static void CallCarServer() throws Exception {
-        Registry carRegistry = LocateRegistry.getRegistry("192.168.56.1", 5003);
+        Registry carRegistry = LocateRegistry.getRegistry("172.22.181.42", 5003);
         carStub = (ICarServer) carRegistry.lookup("Car");
 
         HashMap<String, Car> cars;

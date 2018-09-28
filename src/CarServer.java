@@ -59,11 +59,12 @@ public class CarServer implements ICarServer {
 
     public static void main(String args[]) {
         try {
+            System.setProperty("java.rmi.server.hostname", "172.22.181.42");
             CarServer obj = new CarServer();
             ICarServer stub = (ICarServer) UnicastRemoteObject.exportObject(obj, 0);
 
             LocateRegistry.createRegistry(5003);
-            Registry registry = LocateRegistry.getRegistry("192.168.56.1",5003);
+            Registry registry = LocateRegistry.getRegistry("172.22.181.42",5003);
 
             registry.bind("Car", stub);
 
