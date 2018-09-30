@@ -1,6 +1,12 @@
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.HashMap;
 
 public class AirlineServer implements IAirlineServer {
@@ -8,9 +14,9 @@ public class AirlineServer implements IAirlineServer {
     private HashMap<String, Reservation> reservations = new HashMap<>();
 
     public AirlineServer() {
-        airlines.put("United", new Airline("United", 101, 55, 300.00));
-        airlines.put("Delta", new Airline("Delta", 202, 34, 250.00));
-        airlines.put("American", new Airline("American", 303, 72, 125.00));
+//        airlines.put("United", new Airline("United", 101, 55, 300.00));
+//        airlines.put("Delta", new Airline("Delta", 202, 34, 250.00));
+//        airlines.put("American", new Airline("American", 303, 72, 125.00));
     }
 
     public HashMap<String, Airline> GetAirlines() {
@@ -72,10 +78,24 @@ public class AirlineServer implements IAirlineServer {
 
             registry.bind("Airline", stub);
 
+            initializeDBConnection();
+
             System.err.println("AirlineServer waiting for client to connect...");
         } catch (Exception e) {
             System.err.println("AirlineServer exception: " + e.toString());
             e.printStackTrace();
+        }
+    }
+
+    private static void initializeDBConnection() {
+        String url = "jdbc:mysql://localhost:3306/rpc_project";
+        String username = "root";
+        String password = "password";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            System.out.println("Database connected!");
+        } catch (SQLException e) {
+            System.out.println("Cannot connect the database!");
         }
     }
 }
