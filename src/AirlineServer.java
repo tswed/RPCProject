@@ -1,22 +1,32 @@
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
+
 
 public class AirlineServer implements IAirlineServer {
     private HashMap<String, Airline> airlines = new HashMap<>();
     private HashMap<String, Reservation> reservations = new HashMap<>();
+    static Connection connection;
 
     public AirlineServer() {
 //        airlines.put("United", new Airline("United", 101, 55, 300.00));
 //        airlines.put("Delta", new Airline("Delta", 202, 34, 250.00));
 //        airlines.put("American", new Airline("American", 303, 72, 125.00));
+    }
+
+    private static void initializeDBData() {
+        try {
+            Statement stmt = connection.createStatement();
+            stmt.execute("INSERT INTO Airlines (flight_num, airline_name, seats_available, departure_city, destination_city)" +
+                    "VALUES ('101', 'United', '20', 'Chicago', 'Austin')," +
+                    "('202', 'Delta', '38', 'Chicago', 'Paris')," +
+                    "('303', 'American', '22', 'Chicago', 'New York City)");
+            stmt.close();
+        } catch (Exception e) {
+            System.out.println("Failed to initialize airline data");
+        }
+
     }
 
     public HashMap<String, Airline> GetAirlines() {
@@ -68,34 +78,24 @@ public class AirlineServer implements IAirlineServer {
     }
 
     public static void main(String args[]) {
+        AirlineHelper airlineHelper = new AirlineHelper();
         try {
-            System.setProperty("java.rmi.server.hostname", "172.22.181.41");
-            AirlineServer obj = new AirlineServer();
-            IAirlineServer stub = (IAirlineServer) UnicastRemoteObject.exportObject(obj, 0);
-
-            LocateRegistry.createRegistry(5002);
-            Registry registry = LocateRegistry.getRegistry("172.22.181.41",5002);
-
-            registry.bind("Airline", stub);
-
-            initializeDBConnection();
+            airlineHelper.iniitializeRegistry();
+            connection = airlineHelper.initializeDBConnection();
+            initializeDBData();
 
             System.err.println("AirlineServer waiting for client to connect...");
-        } catch (Exception e) {
-            System.err.println("AirlineServer exception: " + e.toString());
-            e.printStackTrace();
-        }
-    }
-
-    private static void initializeDBConnection() {
-        String url = "jdbc:mysql://localhost:3306/rpc_project";
-        String username = "root";
-        String password = "password";
-
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
-            System.out.println("Database connected!");
         } catch (SQLException e) {
             System.out.println("Cannot connect the database!");
+        } catch (Exception e) {
+            System.err.println("AirlineServer exception: " + e.toString());
+        }
+        finally {
+            try {
+                connection.close();
+            } catch (Exception e) {
+                System.out.println("Unable to close database connection.");
+            }
         }
     }
 }
