@@ -88,8 +88,8 @@ public class AirlineServer implements IAirlineServer {
 
                 int seats = airlineRequested.getSeatsAvailable() - 1;
 
-                stmt.executeUpdate("UPDATE airlines" +
-                        "SET seats_available="+ seats + " WHERE airline_name='" + nameOfAirline +"';");
+                String sql = "UPDATE airlines SET seats_available="+ seats + " WHERE airline_name='" + nameOfAirline + "';";
+                stmt.executeUpdate(sql);
 
                 stmt.close();
             } catch (Exception e) {
