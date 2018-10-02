@@ -12,7 +12,7 @@ public class Client {
     public static void main(String[] args) {
 
         try {
-            CallHotelServer();
+            //CallHotelServer();
 
         } catch (Exception e) {
             System.err.println("Communication with hotel server failed.");
@@ -31,7 +31,7 @@ public class Client {
         }
 
         try {
-            CallCarServer();
+            //CallCarServer();
 
         } catch (Exception e) {
             System.err.println("Communication with car server failed.");
@@ -61,7 +61,7 @@ public class Client {
     }
 
     private static void CallAirlineServer() throws Exception {
-        Registry airlineRegistry = LocateRegistry.getRegistry("172.22.181.41", 5002);
+        Registry airlineRegistry = LocateRegistry.getRegistry("172.22.181.44", 5002);
         airlineStub = (IAirlineServer) airlineRegistry.lookup("Airline");
 
         HashMap<String, Reservation> reservations;
@@ -71,7 +71,7 @@ public class Client {
 
         for (Airline airline : airlines.values()) {
             System.out.print("Available airline: " + airline.getName() + ", Number of seats available: "
-                + airline.getSeatsAvailable() + ", Price: " + airline.getSeatsAvailable() + "\n");
+                + airline.getSeatsAvailable() + "\n");
         }
 
         System.out.println(airlineStub.AddAirlineReservation("Mr. Incredible", "United", "01-01-2015", "01-15-2019"));

@@ -4,13 +4,15 @@ public class Airline implements Serializable {
     String name;
     int flightNum;
     int seatsAvailable;
-    double price;
+    String departureCity;
+    String destinationCity;
 
-    public Airline(String name, int flightNum, int seatsAvailable, double price) {
+    public Airline(String name, int flightNum, int seatsAvailable, String departureCity, String destinationCity) {
         setName(name);
         setFlightNum(flightNum);
         setSeatsAvailable(seatsAvailable);
-        setPrice(price);
+        setDepartureCity(departureCity);
+        setDestinationCity(destinationCity);
     }
 
     public String getName() {
@@ -37,11 +39,19 @@ public class Airline implements Serializable {
         this.seatsAvailable = seatsAvailable;
     }
 
-    public double getPrice() {
-        return price;
+    public String getDepartureCity() {
+        return departureCity;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setDepartureCity(String departureCity) {
+        this.departureCity = departureCity;
+    }
+
+    public String getDestinationCity() {
+        return destinationCity;
+    }
+
+    public void setDestinationCity(String destinationCity) {
+        this.destinationCity = destinationCity;
     }
 }
