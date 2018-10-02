@@ -54,11 +54,11 @@ public class AirlineServer implements IAirlineServer {
     public HashMap<String, Reservation> GetAirlineReservations() {
         try {
             Statement stmt = connection.createStatement();
-            ResultSet result = stmt.executeQuery("Select * from reservations");
+            ResultSet result = stmt.executeQuery("SELECT * from reservations WHERE reservation_type = 'Airline'");
 
             while (result.next()) {
                 Reservation reservation = new Reservation("Airline",
-                        result.getString("guest_name"), result.getString("airline_name"),
+                        result.getString("guest_name"), result.getString("reservation_name"),
                         result.getString("start_date"), result.getString("end_date"));
                 reservations.put(result.getString("guest_name"), reservation);
             }
@@ -129,7 +129,7 @@ public class AirlineServer implements IAirlineServer {
                 int seats = airlineRequested.getSeatsAvailable() + 1;
 
                 stmt.executeUpdate("UPDATE airlines" +
-                        "SET seats_available="+ seats + " WHERE reservation_name='" + airlineRequested.getName() +"';");
+                        "SET seats_available="+ seats + " WHERE airline_name='" + airlineRequested.getName() +"';");
 
                 stmt.close();
             } catch (Exception e) {
