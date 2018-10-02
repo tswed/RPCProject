@@ -3,7 +3,6 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.Statement;
 
 public class AirlineHelper {
 
@@ -11,12 +10,12 @@ public class AirlineHelper {
     }
 
     public void iniitializeRegistry() throws Exception {
-        System.setProperty("java.rmi.server.hostname", "172.22.181.44");
+        System.setProperty("java.rmi.server.hostname", "172.22.181.38");
         AirlineServer obj = new AirlineServer();
         IAirlineServer stub = (IAirlineServer) UnicastRemoteObject.exportObject(obj, 0);
 
         LocateRegistry.createRegistry(5002);
-        Registry registry = LocateRegistry.getRegistry("172.22.181.41",5002);
+        Registry registry = LocateRegistry.getRegistry("172.22.181.38",5002);
 
         registry.bind("Airline", stub);
 

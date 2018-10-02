@@ -22,10 +22,11 @@ public class AirlineServer implements IAirlineServer {
             stmt.executeUpdate("INSERT INTO airlines (flight_num, airline_name, seats_available, departure_city, destination_city)" +
                     "VALUES ('101', 'United', '20', 'Chicago', 'Austin')," +
                     "('202', 'Delta', '38', 'Chicago', 'Paris')," +
-                    "('303', 'American', '22', 'Chicago', 'New York City)");
+                    "('303', 'American', '22', 'Chicago', 'New York City')");
             stmt.close();
         } catch (Exception e) {
-            System.out.println("Failed to initialize airline data");
+            System.out.println("Failed to initialize airline data.");
+            e.printStackTrace();
         }
     }
 
@@ -44,6 +45,7 @@ public class AirlineServer implements IAirlineServer {
             stmt.close();
         } catch (Exception e) {
             System.out.println("Failed to return airline data");
+            e.printStackTrace();
         }
 
         return airlines;
@@ -64,6 +66,7 @@ public class AirlineServer implements IAirlineServer {
             stmt.close();
         } catch (Exception e) {
             System.out.println("Failed to return reservation data.");
+            e.printStackTrace();
         }
 
         return reservations;
@@ -91,6 +94,7 @@ public class AirlineServer implements IAirlineServer {
                 stmt.close();
             } catch (Exception e) {
                 System.out.println("Failed to add reservation.");
+                e.printStackTrace();
             }
 
             reservations.put(guestName, new Reservation("Airline", guestName, nameOfAirline, startDate, endDate));
@@ -130,6 +134,7 @@ public class AirlineServer implements IAirlineServer {
                 stmt.close();
             } catch (Exception e) {
                 System.out.println("Failed to cancel reservation.");
+                e.printStackTrace();
             }
 
         } else {
@@ -137,6 +142,14 @@ public class AirlineServer implements IAirlineServer {
         }
 
         return "You canceled an airline reservation for guest: " + name;
+    }
+
+    public void CloseConnection() {
+        try {
+            connection.close();
+        } catch (Exception e) {
+            System.out.println("Unable to close database connection.");
+        }
     }
 
     public static void main(String args[]) {
@@ -151,13 +164,6 @@ public class AirlineServer implements IAirlineServer {
             System.out.println("Cannot connect the database!");
         } catch (Exception e) {
             System.err.println("AirlineServer exception: " + e.toString());
-        }
-        finally {
-            try {
-                connection.close();
-            } catch (Exception e) {
-                System.out.println("Unable to close database connection.");
-            }
         }
     }
 }
