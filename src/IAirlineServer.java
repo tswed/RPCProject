@@ -7,5 +7,5 @@ public interface IAirlineServer extends Remote {
     HashMap<String, Reservation> GetAirlineReservations() throws RemoteException;
     String AddAirlineReservation(String name, String nameOfAirline, String startDate, String endDate) throws RemoteException;
     String CancelAirlineReservation(String name) throws RemoteException;
-    void CloseConnection();
+    void CloseConnection() throws RemoteException;
 }

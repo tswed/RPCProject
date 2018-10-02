@@ -89,7 +89,7 @@ public class AirlineServer implements IAirlineServer {
                 int seats = airlineRequested.getSeatsAvailable() - 1;
 
                 stmt.executeUpdate("UPDATE airlines" +
-                        "SET seats_available='"+ seats + "' WHERE airline_name='" + nameOfAirline +"'");
+                        "SET seats_available="+ seats + " WHERE airline_name='" + nameOfAirline +"';");
 
                 stmt.close();
             } catch (Exception e) {
@@ -102,11 +102,11 @@ public class AirlineServer implements IAirlineServer {
             return "Airline not found or not available.  Please try a different airline.";
         }
 
-        try {
-            Thread.sleep(200000);
-        } catch (Exception e) {
-            System.out.println("Thread.sleep didn't work");
-        }
+//        try {
+//            Thread.sleep(200000);
+//        } catch (Exception e) {
+//            System.out.println("Thread.sleep didn't work");
+//        }
 
         return "You reserved an Airline for guest: " + guestName + ", on airline: " + nameOfAirline;
     }
@@ -129,7 +129,7 @@ public class AirlineServer implements IAirlineServer {
                 int seats = airlineRequested.getSeatsAvailable() + 1;
 
                 stmt.executeUpdate("UPDATE airlines" +
-                        "SET seats_available='"+ seats + "' WHERE airline_name='" + airlineRequested.getName() +"'");
+                        "SET seats_available="+ seats + " WHERE reservation_name='" + airlineRequested.getName() +"';");
 
                 stmt.close();
             } catch (Exception e) {
