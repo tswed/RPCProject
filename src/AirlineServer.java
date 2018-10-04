@@ -76,6 +76,11 @@ public class AirlineServer implements IAirlineServer {
         System.out.println("AddAirlineReservations function called.");
 
         airlines = GetAirlines();
+        reservations = GetAirlineReservations();
+
+        if (reservations.containsKey(guestName)) {
+            return "Reservation already added for guest: " + guestName;
+        }
 
         Airline airlineRequested = airlines.get(nameOfAirline);
 
@@ -118,6 +123,11 @@ public class AirlineServer implements IAirlineServer {
 
         reservations = GetAirlineReservations();
         airlines = GetAirlines();
+
+        if (reservations.containsKey(name)) {
+            return "Reservation not found for guest: " + name;
+        }
+
         Reservation airlineReservation = reservations.get(name);
 
         if (airlineReservation != null) {
@@ -159,7 +169,7 @@ public class AirlineServer implements IAirlineServer {
         try {
             airlineHelper.iniitializeRegistry();
             connection = airlineHelper.initializeDBConnection();
-            initializeDBData();
+            //initializeDBData();
 
             System.err.println("AirlineServer waiting for client to connect...");
         } catch (SQLException e) {
