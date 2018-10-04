@@ -76,6 +76,7 @@ public class AirlineServer implements IAirlineServer {
         System.out.println("AddAirlineReservations function called.");
 
         airlines = GetAirlines();
+        reservations.clear();
         reservations = GetAirlineReservations();
 
         if (reservations.containsKey(guestName)) {
@@ -94,7 +95,6 @@ public class AirlineServer implements IAirlineServer {
                 int seats = airlineRequested.getSeatsAvailable() - 1;
 
                 String sql = "UPDATE airlines SET seats_available="+ seats + " WHERE airline_name='" + nameOfAirline + "';";
-                System.out.println(sql);
 
                 stmt.executeUpdate(sql);
 

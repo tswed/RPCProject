@@ -10,12 +10,12 @@ public class AirlineHelper {
     }
 
     public void iniitializeRegistry() throws Exception {
-        System.setProperty("java.rmi.server.hostname", "172.22.181.38");
+        System.setProperty("java.rmi.server.hostname", "172.22.181.43");
         AirlineServer obj = new AirlineServer();
         IAirlineServer stub = (IAirlineServer) UnicastRemoteObject.exportObject(obj, 0);
 
         LocateRegistry.createRegistry(5002);
-        Registry registry = LocateRegistry.getRegistry("172.22.181.38",5002);
+        Registry registry = LocateRegistry.getRegistry("172.22.181.43",5002);
 
         registry.bind("Airline", stub);
 

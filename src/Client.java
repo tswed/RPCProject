@@ -61,7 +61,7 @@ public class Client {
     }
 
     private static void CallAirlineServer() throws Exception {
-        Registry airlineRegistry = LocateRegistry.getRegistry("172.22.181.38", 5002);
+        Registry airlineRegistry = LocateRegistry.getRegistry("172.22.181.43", 5002);
         airlineStub = (IAirlineServer) airlineRegistry.lookup("Airline");
 
         HashMap<String, Reservation> reservations;
@@ -78,7 +78,8 @@ public class Client {
 
         reservations = airlineStub.GetAirlineReservations();
         DisplayReservations(reservations);
-        airlineStub.CloseConnection();
+
+        airlineStub.CancelAirlineReservation("Mr. Incredible");
 
         System.out.println();
     }
