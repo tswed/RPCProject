@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class AirlineServer implements IAirlineServer {
     private HashMap<String, Airline> airlines = new HashMap<>();
     private HashMap<String, Reservation> reservations = new HashMap<>();
-    static Connection connection;
+    private static Connection connection;
 
     public AirlineServer() {
 //        airlines.put("United", new Airline("United", 101, 55, 300.00));
@@ -57,7 +57,7 @@ public class AirlineServer implements IAirlineServer {
             ResultSet result = stmt.executeQuery("SELECT * from reservations WHERE reservation_type = 'Airline'");
 
             while (result.next()) {
-                Reservation reservation = new Reservation("Airline",
+                Reservation reservation = new Reservation(result.getInt("id"),result.getString("reservation_type"),
                         result.getString("guest_name"), result.getString("reservation_name"),
                         result.getString("start_date"), result.getString("end_date"));
                 reservations.put(result.getString("guest_name"), reservation);
@@ -104,7 +104,7 @@ public class AirlineServer implements IAirlineServer {
                 e.printStackTrace();
             }
 
-            reservations.put(guestName, new Reservation("Airline", guestName, nameOfAirline, startDate, endDate));
+            reservations.put(guestName, new Reservation(airlineRequested.getFlightNum(),"Airline", guestName, nameOfAirline, startDate, endDate));
         } else {
             return "Airline not found or not available.  Please try a different airline.";
         }
@@ -167,7 +167,7 @@ public class AirlineServer implements IAirlineServer {
     public static void main(String args[]) {
         AirlineHelper airlineHelper = new AirlineHelper();
         try {
-            airlineHelper.iniitializeRegistry();
+            airlineHelper.initializeRegistry();
             connection = airlineHelper.initializeDBConnection();
             //initializeDBData();
 

@@ -4,20 +4,16 @@ import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class AirlineHelper {
-
-    public AirlineHelper() {
-    }
-
+public class HotelHelper {
     public void initializeRegistry() throws Exception {
-        System.setProperty("java.rmi.server.hostname", "172.22.181.43");
-        AirlineServer obj = new AirlineServer();
-        IAirlineServer stub = (IAirlineServer) UnicastRemoteObject.exportObject(obj, 0);
+        System.setProperty("java.rmi.server.hostname", "172.22.181.50");
+        HotelServer obj = new HotelServer();
+        IHotelServer stub = (IHotelServer) UnicastRemoteObject.exportObject(obj, 0);
 
-        LocateRegistry.createRegistry(5002);
-        Registry registry = LocateRegistry.getRegistry("172.22.181.43",5002);
+        LocateRegistry.createRegistry(5003);
+        Registry registry = LocateRegistry.getRegistry("172.22.181.50",5003);
 
-        registry.bind("Airline", stub);
+        registry.bind("Hotel", stub);
 
     }
 

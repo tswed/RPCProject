@@ -4,11 +4,22 @@ public class Hotel implements Serializable {
     private String hotelName;
     private int numOfRoomsAvailable;
     private double price;
+    private int id;
 
-    public Hotel(String name, int numRooms, double price) {
+    public Hotel(int id, String name, int numRooms, double price) {
+        setId(id);
         setHotelName(name);
         setNumOfRoomsAvailable(numRooms);
         setPrice(price);
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getHotelName() {

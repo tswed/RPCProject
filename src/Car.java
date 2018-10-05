@@ -10,20 +10,20 @@ public class Car implements Serializable {
 
     public Car() {}
 
-    public Car(String carName, int id, String size, String model, int year, int numAvailable) {
-        setCarName(carName);
+    public Car(String make, int id, String size, String model, int year, int qtyAvailable) {
+        setCarMake(make);
         setId(id);
         setSize(size);
         setModel(model);
         setYear(year);
-        setNumAvailable(numAvailable);
+        setQtyAvailable(qtyAvailable);
     }
 
-    public String getCarName() {
+    public String getCarMake() {
         return carName;
     }
 
-    public void setCarName(String carName) {
+    public void setCarMake(String carName) {
         this.carName = carName;
     }
 
@@ -59,11 +59,11 @@ public class Car implements Serializable {
         this.year = year;
     }
 
-    public int getNumAvailable() {
+    public int getQtyAvailable() {
         return numAvailable;
     }
 
-    public void setNumAvailable(int numAvailable) {
+    public void setQtyAvailable(int numAvailable) {
         this.numAvailable = numAvailable;
     }
 }

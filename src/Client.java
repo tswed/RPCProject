@@ -12,7 +12,7 @@ public class Client {
     public static void main(String[] args) {
 
         try {
-            //CallHotelServer();
+            CallHotelServer();
 
         } catch (Exception e) {
             System.err.println("Communication with hotel server failed.");
@@ -31,7 +31,7 @@ public class Client {
         }
 
         try {
-            //CallCarServer();
+            CallCarServer();
 
         } catch (Exception e) {
             System.err.println("Communication with car server failed.");
@@ -85,7 +85,7 @@ public class Client {
     }
 
     private static void CallHotelServer() throws Exception {
-        Registry hotelRegistry = LocateRegistry.getRegistry("172.22.181.34", 5001);
+        Registry hotelRegistry = LocateRegistry.getRegistry("172.22.181.50", 5001);
         hotelStub = (IHotelServer) hotelRegistry.lookup("Hotel");
         HashMap<String, Reservation> reservations;
         HashMap<String, Hotel> hotels;
@@ -113,7 +113,7 @@ public class Client {
     }
 
     private static void CallCarServer() throws Exception {
-        Registry carRegistry = LocateRegistry.getRegistry("172.22.181.42", 5003);
+        Registry carRegistry = LocateRegistry.getRegistry("172.22.181.30", 5003);
         carStub = (ICarServer) carRegistry.lookup("Car");
 
         HashMap<String, Car> cars;
@@ -122,8 +122,8 @@ public class Client {
         cars = carStub.GetCars();
 
         for(Car car : cars.values()) {
-            System.out.print("Available car: " + car.getCarName() + ", Model: " + car.getModel() + ", Year: "
-                + car.getYear() + ", Number Available: " + car.getNumAvailable() + "\n");
+            System.out.print("Available car: " + car.getCarMake() + ", Model: " + car.getModel() + ", Year: "
+                + car.getYear() + ", Number Available: " + car.getQtyAvailable() + "\n");
         }
 
         System.out.println(carStub.AddCarReservation("Mr. Incredible", "4Runner", "01-01-2019", "01-15-2019"));

@@ -6,13 +6,23 @@ public class Reservation implements Serializable {
     private String nameOfGuest;
     private String startDate;
     private String endDate;
+    private int id;
 
-    public Reservation(String type, String nameOfGuest, String nameOfReservation, String startDate, String endDate) {
+    public Reservation(int id, String type, String nameOfGuest, String nameOfReservation, String startDate, String endDate) {
+        setId(id);
         setType(type);
         setNameOfReservation(nameOfReservation);
         setNameOfGuest(nameOfGuest);
         setStartDate(startDate);
         setEndDate(endDate);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNameOfReservation() {
