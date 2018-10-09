@@ -3,17 +3,25 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
+import java.util.Properties;
 
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.clients.producer.RecordMetadata;
 
 public class AirlineServer implements IAirlineServer {
     private HashMap<String, Airline> airlines = new HashMap<>();
     private HashMap<String, Reservation> reservations = new HashMap<>();
     private static Connection connection;
+    Producer<String, String> producer;
 
     public AirlineServer() {
 //        airlines.put("United", new Airline("United", 101, 55, 300.00));
 //        airlines.put("Delta", new Airline("Delta", 202, 34, 250.00));
 //        airlines.put("American", new Airline("American", 303, 72, 125.00));
+
+        producer = createProducer();
     }
 
     private static void initializeDBData() {
@@ -99,6 +107,8 @@ public class AirlineServer implements IAirlineServer {
                 stmt.executeUpdate(sql);
 
                 stmt.close();
+
+                SendMessageToProducer(guestName);
             } catch (Exception e) {
                 System.out.println("Failed to add reservation.");
                 e.printStackTrace();
@@ -109,13 +119,20 @@ public class AirlineServer implements IAirlineServer {
             return "Airline not found or not available.  Please try a different airline.";
         }
 
-//        try {
-//            Thread.sleep(200000);
-//        } catch (Exception e) {
-//            System.out.println("Thread.sleep didn't work");
-//        }
-
         return "You reserved an Airline for guest: " + guestName + ", on airline: " + nameOfAirline;
+    }
+
+    private void SendMessageToProducer(String guestName) {
+        ProducerRecord<String, String> recordToSend = new ProducerRecord<>("Airline", "Guest: "
+                + guestName + " reserved an airline.");
+
+        try {
+            RecordMetadata metadata = producer.send(recordToSend).get();
+            System.out.println("Message Sent!  Topic: " + metadata.topic() + "\n"
+                + "Partition: " + metadata.partition());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public String CancelAirlineReservation(String name) {
@@ -177,5 +194,13 @@ public class AirlineServer implements IAirlineServer {
         } catch (Exception e) {
             System.err.println("AirlineServer exception: " + e.toString());
         }
+    }
+
+    private static Producer<String, String> createProducer() {
+        Properties kafkaProps = new Properties();
+        kafkaProps.put("bootstrap.servers", "localhost:9092");
+        kafkaProps.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        kafkaProps.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        return new KafkaProducer<>(kafkaProps);
     }
 }
