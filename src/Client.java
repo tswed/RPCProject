@@ -79,7 +79,7 @@ public class Client {
         reservations = airlineStub.GetAirlineReservations();
         DisplayReservations(reservations);
 
-        airlineStub.CancelAirlineReservation("Mr. Incredible");
+        System.out.println(airlineStub.CancelAirlineReservation("Mr. Incredible"));
 
         System.out.println();
     }
@@ -101,6 +101,8 @@ public class Client {
 
         reservations = hotelStub.GetHotelReservations();
         DisplayReservations(reservations);
+
+        System.out.println(hotelStub.CancelHotelReservation("Mr. Incredible"));
 
         System.out.println();
     }
@@ -131,8 +133,7 @@ public class Client {
         reservations = carStub.GetCarReservations();
         DisplayReservations(reservations);
         System.out.println(carStub.CancelCarReservation("Mr. Incredible"));
-        reservations = carStub.GetCarReservations();
-        DisplayReservations(reservations);
+
         System.out.println();
     }
 }
