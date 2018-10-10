@@ -135,7 +135,7 @@ public class HotelServer implements IHotelServer {
 
                 Statement stmt = connection.createStatement();
                 stmt.executeUpdate("DELETE FROM reservations" +
-                        "WHERE guest_name = " + name);
+                        "WHERE guest_name = " + "'" + name + "'" + " and reservation_type = " + "'Hotel'");
 
                 int numRoomsAvailable = hotelRequested.getNumOfRoomsAvailable() + 1;
 

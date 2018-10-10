@@ -133,7 +133,7 @@ public class CarServer implements ICarServer {
 
                 Statement stmt = connection.createStatement();
                 stmt.executeUpdate("DELETE FROM reservations" +
-                        "WHERE guest_name = " + name);
+                        "WHERE guest_name = " + "'" + name + "'" + " and reservation_type = " + "'Car'");
 
                 int qty_available = car.getQtyAvailable() + 1;
 

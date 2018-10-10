@@ -153,7 +153,7 @@ public class AirlineServer implements IAirlineServer {
 
                 Statement stmt = connection.createStatement();
                 stmt.executeUpdate("DELETE FROM reservations" +
-                        "WHERE guest_name = " + name);
+                        "WHERE guest_name = " + "'" + name + "'" + " and reservation_type = " + "'Airline'");
 
                 int seats = airlineRequested.getSeatsAvailable() + 1;
 
