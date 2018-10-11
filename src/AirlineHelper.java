@@ -22,8 +22,8 @@ public class AirlineHelper {
     }
 
     public Connection initializeDBConnection() throws Exception {
-        String url = "jdbc:mysql://localhost:3306/rpc_project";
-        String username = "root";
+        String url = "jdbc:mysql://172.29.245.103:3306/rpc_project";
+        String username = "Thomas.Swed";
         String password = "password";
 
         Connection connection = DriverManager.getConnection(url, username, password);
