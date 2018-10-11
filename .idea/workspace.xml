@@ -2,19 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa55fa99-65b4-4717-8e8a-4997460efc58" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPCProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/RPCProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RPCProject/AirlineHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RPCProject/AirlineHelper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RPCProject/AirlineServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RPCProject/AirlineServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RPCProject/CarServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RPCProject/CarServer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RPCProject/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RPCProject/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RPCProject/HotelServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RPCProject/HotelServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirlineHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirlineHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AirlineServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirlineServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HotelServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelServer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -67,24 +59,24 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="1" />
-          <entry key="java" value="8217" />
+          <entry key="java" value="8353" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="8217" />
+          <entry key="JAVA" value="8353" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="25" />
+          <entry key="java" value="26" />
           <entry key="xml" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="25" />
+          <entry key="JAVA" value="26" />
           <entry key="XML" value="11" />
         </counts>
       </usages-collector>
@@ -134,11 +126,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AirlineServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="503">
-              <caret line="101" column="40" selection-start-line="101" selection-start-column="40" selection-end-line="101" selection-end-column="40" />
+            <state relative-caret-position="343">
+              <caret line="149" column="39" lean-forward="true" selection-start-line="149" selection-start-column="39" selection-end-line="149" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#692#693#0" expanded="true" />
@@ -148,11 +140,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="57" column="35" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
+            <state relative-caret-position="91">
+              <caret line="61" column="69" selection-start-line="61" selection-start-column="69" selection-end-line="61" selection-end-column="69" />
             </state>
           </provider>
         </entry>
@@ -195,8 +187,8 @@
         <option value="$PROJECT_DIR$/src/AirlineHelper.java" />
         <option value="$PROJECT_DIR$/src/CarServer.java" />
         <option value="$PROJECT_DIR$/src/HotelServer.java" />
-        <option value="$PROJECT_DIR$/src/Client.java" />
         <option value="$PROJECT_DIR$/src/AirlineServer.java" />
+        <option value="$PROJECT_DIR$/src/Client.java" />
       </list>
     </option>
   </component>
@@ -236,7 +228,7 @@
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539218048022" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539220895630" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/slf4j-1.7.25/slf4j-jdk14-1.7.25.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -330,12 +322,12 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.38723403" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.44539008" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39858156" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.028744327" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.23829788" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32765958" />
@@ -359,7 +351,7 @@
           <url>file://$PROJECT_DIR$/src/Client.java</url>
           <line>60</line>
           <properties />
-          <option name="timeStamp" value="9" />
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -501,22 +493,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="57" column="35" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AirlineServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
-          <caret line="101" column="40" selection-start-line="101" selection-start-column="40" selection-end-line="101" selection-end-column="40" />
+        <state relative-caret-position="343">
+          <caret line="149" column="39" lean-forward="true" selection-start-line="149" selection-start-column="39" selection-end-line="149" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#692#693#0" expanded="true" />
             <element signature="e#735#736#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="61" column="69" selection-start-line="61" selection-start-column="69" selection-end-line="61" selection-end-column="69" />
         </state>
       </provider>
     </entry>

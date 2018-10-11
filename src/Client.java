@@ -59,7 +59,7 @@ public class Client {
 
         ConsumerRecords<String, String> records = consumer.poll(1000);
         for (ConsumerRecord<String, String> record : records) {
-            System.out.println("Received message: (" + record.key() + ", " + record.value() + ") at offset " + record.offset());
+            System.out.println("Received message: (" + record.topic() + ", " + record.value() + ") at offset " + record.offset());
         }
     }
 
@@ -109,9 +109,6 @@ public class Client {
         }
 
         System.out.println(airlineStub.AddAirlineReservation("Mr. Incredible", "United", "01-01-2015", "01-15-2019"));
-
-        reservations = airlineStub.GetAirlineReservations();
-        DisplayReservations(reservations);
 
         System.out.println(airlineStub.CancelAirlineReservation("Mr. Incredible"));
 

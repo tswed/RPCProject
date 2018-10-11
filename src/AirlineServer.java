@@ -102,7 +102,7 @@ public class AirlineServer implements IAirlineServer {
                 stmt.executeUpdate(sql);
                 stmt.close();
 
-                SendMessageToProducer(guestName);
+                SendMessageToProducer(guestName, " reserved an airline.");
             } catch (Exception e) {
                 System.out.println("Failed to add reservation.");
                 e.printStackTrace();
@@ -116,9 +116,9 @@ public class AirlineServer implements IAirlineServer {
         return "You reserved an Airline for guest: " + guestName + ", on airline: " + nameOfAirline;
     }
 
-    private void SendMessageToProducer(String guestName) {
+    private void SendMessageToProducer(String guestName, String actionMessage) {
         ProducerRecord<String, String> recordToSend = new ProducerRecord<>("Airline", "Guest: "
-                + guestName + " reserved an airline.");
+                + guestName + actionMessage);
 
         try {
             RecordMetadata metadata = producer.send(recordToSend).get();
@@ -148,7 +148,7 @@ public class AirlineServer implements IAirlineServer {
                 Statement stmt = connection.createStatement();
                 String sql = "DELETE FROM reservations " +
                         "WHERE guest_name = '" + name + "' and reservation_type = " + "'Airline';";
-                System.out.println(sql);
+                stmt.executeUpdate(sql);
 
                 int seats = airlineRequested.getSeatsAvailable() + 1;
 
@@ -156,6 +156,8 @@ public class AirlineServer implements IAirlineServer {
                         "SET seats_available = "+ seats + " WHERE airline_name= '" + airlineRequested.getName() +"';");
 
                 stmt.close();
+
+                SendMessageToProducer(name, " canceled an airline reservation.");
             } catch (Exception e) {
                 System.out.println("Failed to cancel reservation.");
                 e.printStackTrace();
