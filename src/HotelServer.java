@@ -123,7 +123,7 @@ public class HotelServer implements IHotelServer {
         reservations = GetHotelReservations();
         hotels = GetHotels();
 
-        if (reservations.containsKey(name)) {
+        if (!reservations.containsKey(name)) {
             return "Reservation not found for guest: " + name;
         }
 

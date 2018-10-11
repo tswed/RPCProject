@@ -10,20 +10,20 @@ public class AirlineHelper {
     }
 
     public void initializeRegistry() throws Exception {
-        System.setProperty("java.rmi.server.hostname", "172.22.181.43");
+        System.setProperty("java.rmi.server.hostname", "192.168.56.1");
         AirlineServer obj = new AirlineServer();
         IAirlineServer stub = (IAirlineServer) UnicastRemoteObject.exportObject(obj, 0);
 
         LocateRegistry.createRegistry(5002);
-        Registry registry = LocateRegistry.getRegistry("172.22.181.43",5002);
+        Registry registry = LocateRegistry.getRegistry("192.168.56.1",5002);
 
         registry.bind("Airline", stub);
 
     }
 
     public Connection initializeDBConnection() throws Exception {
-        String url = "jdbc:mysql://172.22.181.42:3306/rpc_project";
-        String username = "thomas2";
+        String url = "jdbc:mysql://localhost:3306/rpc_project";
+        String username = "root";
         String password = "password";
 
         Connection connection = DriverManager.getConnection(url, username, password);

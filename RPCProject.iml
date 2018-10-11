@@ -11,7 +11,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../slf4j-1.7.25/slf4j-jdk14-1.7.25.jar!/" />
+          <root url="jar://$MODULE_DIR$/../mysql-connector-java-5.1.47/mysql-connector-java-5.1.47.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -20,7 +20,16 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../slf4j-1.7.25/slf4j-api-1.7.25.jar!/" />
+          <root url="jar://$MODULE_DIR$/slf4j-1.7.25/slf4j-api-1.7.25.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/slf4j-1.7.25/slf4j-jdk14-1.7.25.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

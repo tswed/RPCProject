@@ -121,7 +121,7 @@ public class CarServer implements ICarServer {
         reservations = GetCarReservations();
         cars = GetCars();
 
-        if (reservations.containsKey(name)) {
+        if (!reservations.containsKey(name)) {
             return "Reservation not found for guest: " + name;
         }
 
